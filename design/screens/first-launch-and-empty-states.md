@@ -29,5 +29,8 @@ This is also the general "empty `to watch`" message — reused any time the `to 
 
 **CTA button copy:** "Search for a Movie" — navigates to the OMDb Search view/tab. Same button and destination regardless of whether an API key is already set; the OMDb view is what decides whether to prompt for one.
 
+## Visual treatment
+Same shadcn **Empty** component pattern used across the OMDb search states (see [No Results & Errors](/design/screens/omdb-search/no-results-and-errors.md#visual-treatment)): icon → title → subtitle → action button, centered in place of the list. **Icon:** `clapperboard` (Lucide), same muted/secondary-token background badge treatment as the OMDb states — brings the library empty states in line with the rest of the app's Empty states rather than being the one icon-less variant. See [Watched View](/design/screens/library-views/watched-view.md#empty-state) for its own icon.
+
 ## Status
 Ready to build in Figma — mockup not yet created.

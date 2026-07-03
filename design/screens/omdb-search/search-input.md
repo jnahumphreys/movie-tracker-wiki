@@ -17,6 +17,10 @@ Single-row button group input: text field with an adjoined search button, per th
 ## Copy
 - **Placeholder:** "What are we watching tonight?" — playful tone, consistent with the [No Results & Errors](/design/screens/omdb-search/no-results-and-errors.md) copy voice.
 
+## Accessibility
+- Search button icon: `aria-label="Search"` in its idle state — see [Accessibility](/design/foundations/accessibility.md#accessible-names-for-icon-only-controls). Its in-flight spinner state is already `aria-hidden`, see [Search In Flight](/design/screens/omdb-search/search-in-flight.md#accessibility).
+- Text field needs a visually-hidden `<label>` (not just the placeholder above) — same rule applies to the library search inputs, see [To Watch View](/design/screens/library-views/to-watch-view.md).
+
 ## Disabled state
 The entire input (text field + search button) is disabled while no API key is stored — see [Pre-Search State — no key set](/design/screens/omdb-search/pre-search-state.md#variant-no-key-set). Once a key is set, the search button specifically is disabled when the input is empty, and again once a search is submitted (see [Search In Flight](/design/screens/omdb-search/search-in-flight.md)). Standard shadcn disabled treatment — reduced opacity and muted color, no icon change.
 

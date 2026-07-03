@@ -9,7 +9,7 @@ status: confirmed
 
 # Post-Search Actions
 
-Behaviour spec: [Post-Search Actions](/product/user-journeys/searching-omdb.md#post-search-actions). Opens the [Movie Actions Dialog](/design/components/movie-actions-dialog.md) — copy and variants (not in library / already in library) fully specified there.
+Behaviour spec: [Post-Search Actions](/product/user-journeys/searching-omdb.md#post-search-actions). Opens the [Movie Actions Dialog](/design/components/movie-actions-dialog.md) — copy and variants (not in library / already in library), plus the while-saving and write-failure states, are fully specified there and apply unchanged from this entry point.
 
 ## Card state after an action
 Once an action completes (add / reassign / remove), the acted-upon [Movie Card](/design/components/movie-card.md) **updates in place within the existing results list** — it does not disappear and the user does not need to re-search:

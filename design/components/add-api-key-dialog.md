@@ -37,7 +37,7 @@ Clicking "Save key" runs a live check against OMDb before saving. The dialog sta
 - **Title:** "You're all set!"
 - **Subtitle:** "Your OMDb API key is ready to roll."
 - **Button:** single "Close" button (primary) replaces the Cancel/Save key pair — no divider needed with only one action.
-- Closing saves the key and returns to the OMDb search view.
+- The key is saved to local storage as soon as OMDb validation succeeds (before this screen appears) — see [Failure — couldn't save key](#failure--couldnt-save-key) below for what happens if that save itself fails. By the time this screen is showing, the key is already saved; "Close" just dismisses the dialog and returns to the OMDb search view.
 
 ### Failure — invalid key
 - **Title:** "Cut! That's a blooper."
@@ -49,6 +49,12 @@ Clicking "Save key" runs a live check against OMDb before saving. The dialog sta
 - **Title:** "Who turned out the lights?"
 - **Subtitle:** "Couldn't reach OMDb to check your key. Check your connection and try again."
 - Same recovery pattern as the invalid-key case: input stays editable and pre-filled, "Save key" re-enabled as the retry, "Cancel" available.
+
+### Failure — couldn't save key
+Behaviour spec: [Data Persistence Errors — Write failure](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change). Distinct from the two failures above — the key **passed** OMDb's live validation, but the subsequent local-storage write failed. Product requires this to be told apart from an OMDb API error in the message copy, hence its own title/subtitle rather than reusing "Cut! That's a blooper." or "Who turned out the lights?".
+- **Title:** "So close!"
+- **Subtitle:** "Your key checked out, but we couldn't save it. Try again."
+- Same recovery pattern as the other two failure states: input stays editable and pre-filled, "Save key" re-enabled as the retry, "Cancel" available. Retrying re-runs the full submit flow (live validation, then save) rather than a save-only retry — simpler to keep one retry path for all three failure states at MVP, since the key is presumably still valid a moment later.
 
 ## Dismiss behaviour
 Follows [Dialog Conventions](/design/components/dialog-conventions.md#dismiss-behaviour) — Escape, backdrop click/touch, or "Cancel" all close without saving a key, from any state (entry, checking excluded — see below, success, or failure). The user can reopen it later via the same entry points.

@@ -13,7 +13,7 @@ status: confirmed
 Two-row layout at the [360px working viewport](/design/foundations/viewports-and-breakpoints.md): a persistent top bar, and a nav row beneath it.
 
 ## Top bar (persistent chrome, row 1 — sticky)
-- Contains: [Lucide `clapperboard` icon](/design/foundations/iconography.md) + "Movie Tracker" as plain text in the title font. Always shown in full at 360px — never truncated or dropped to make room.
+- Contains: [Lucide `clapperboard` icon](/design/foundations/iconography.md) (decorative, `aria-hidden="true"` — see [Accessibility](/design/foundations/accessibility.md#accessible-names-for-icon-only-controls)) + "Movie Tracker" as plain text in the title font. Always shown in full at 360px — never truncated or dropped to make room.
 - Count badge: single badge, far right of the top bar.
   - Shows the count for whichever library view is currently active — `to watch` count while on To Watch, `watched` count while on Watched.
   - Hidden entirely on the `OMDb` view.

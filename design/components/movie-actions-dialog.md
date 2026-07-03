@@ -41,5 +41,18 @@ Both actions are intentionally equal-weight (both `primary` variant, no visual h
 ## Deletion behaviour
 - "Delete Movie" / "Remove from Library" act **immediately** on tap — no second confirmation step for MVP. A two-step "are you sure?" confirmation is a possible post-MVP enhancement — see [Future Considerations](/product/future-considerations.md).
 
+## While saving
+Behaviour spec: [Data Persistence Errors — Write failure](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change). Applies to every variant above (library reassign/delete, OMDb add, OMDb reassign/remove) — picking any action shows this state and blocks until the write resolves.
+
+- The tapped button's label swaps to a spinning Lucide `loader-circle` (same treatment as [Add API Key Dialog](/design/components/add-api-key-dialog.md#while-checking)'s "Save key" loading state).
+- All buttons in the dialog (including Cancel) are disabled for the duration — matches [Add API Key Dialog](/design/components/add-api-key-dialog.md)'s "while checking" state not accepting dismissal.
+- Nothing on the triggering [Movie Card](/design/components/movie-card.md) changes until the write resolves.
+
+## Failure (write didn't save)
+- The dialog **stays open** with its title, badges, and action buttons unchanged — this is not a dedicated failure view like [Add API Key Dialog](/design/components/add-api-key-dialog.md)'s invalid-key/network states. Keeping the original action buttons visible (rather than collapsing to a single generic retry) keeps the user's original choice set available, since a Movie Actions Dialog can have more than one live action (e.g. "Add to To Watch" / "Add to Watched").
+- An inline message appears above the button stack: **"Couldn't save your change — try again."**
+- All buttons re-enable; tapping the same action button retries that exact action.
+- "Cancel" remains available to back out without retrying — the card/list the user came from is untouched throughout, since nothing was applied until success.
+
 ## Dismiss behaviour
-Follows [Dialog Conventions](/design/components/dialog-conventions.md#dismiss-behaviour) — no dialog-specific exceptions.
+Follows [Dialog Conventions](/design/components/dialog-conventions.md#dismiss-behaviour) — no dialog-specific exceptions, except while saving (see above), which does not accept dismissal until the write resolves.

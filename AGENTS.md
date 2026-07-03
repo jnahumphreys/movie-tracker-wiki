@@ -48,9 +48,10 @@ Give it its own sub-folder with an `index.md` (see `design/screens/omdb-search/`
 
 - Build the wiki **incrementally, one document at a time**, via interview — one question per message, narrowing to a recommendation rather than open-ended choices.
 - Update a doc's `status` field as it moves from ⬜ not started → 🚧 in progress → ✅ confirmed. Reflect the same emoji in the parent `index.md` listing.
-- When a decision resolves an item in `design/open-questions.md` (or any open-questions tracker), move it to the relevant doc and remove it from the tracker — don't let resolved items linger.
+- When a decision resolves an item in `/open-questions.md` (the wiki-wide tracker), move it to the relevant doc and remove it from the tracker — don't let resolved items linger.
 - Every new or edited concept doc: add/update its frontmatter, add it to its parent `index.md` if new, and cross-link it from related docs in other folders (e.g. a new Design screen should link back to its Product user journey), finally update `log.md` with changes.
 - When updating the log, prepend the entry to the top of the log, so the log reads in chonological order. For log entries created on the same date, also prepend the log entry to the top of the entries for that given date.
+- A conformance audit against this spec (mechanical issues auto-fixed, ambiguous findings escalated to `/open-questions.md`) is defined in `/ai/audit-process.md`, wrapped by the `wiki-audit` skill. Only its audit mode is safe to schedule unattended; resolving flagged items is always a manual, interactive session.
 
 ## 6. Don't
 

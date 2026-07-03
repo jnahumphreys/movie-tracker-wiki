@@ -15,5 +15,6 @@ What the app must do — the product owner's area. Covers scope (what's in vs. o
 
 # Tracking
 
-* [Open Questions](/product/open-questions.md) - Rolling tracker of unresolved contradictions and ambiguities.
 * [MVP Scope Gaps — Core Loop Focus](/product/mvp-scope-gaps.md) - Backlog for iterative Q&A sessions to rebalance depth toward the core tracking loop.
+
+Unresolved contradictions and ambiguities are now tracked wiki-wide at [Open Questions](/open-questions.md).

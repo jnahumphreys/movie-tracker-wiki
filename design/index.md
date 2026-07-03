@@ -33,4 +33,4 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 
 # Tracking
 
-* [Open Questions](/design/open-questions.md) - Rolling tracker of unresolved design decisions.
+Unresolved contradictions and ambiguities are now tracked wiki-wide at [Open Questions](/open-questions.md).

@@ -21,6 +21,10 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started · This mea
 * [DevOps](/devops/index.md) - How it's shipped and governed: deployment, CI/CD, tooling.
 * [AI](/ai/index.md) - How we use AI and agentic workflows: agent skills, MCP tooling.
 
+# Tracking
+
+* [Open Questions](/open-questions.md) - Wiki-wide rolling tracker of unresolved contradictions and ambiguities, including audit findings.
+
 # Reference
 
 * [References](/references.md) - Every external link used across the wiki, collated for quick lookup.

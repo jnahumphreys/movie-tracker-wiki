@@ -8,3 +8,4 @@ Covers the `to watch` and `watched` views — both share the same behaviour (liv
 
 * ✅ [To Watch View](/design/screens/library-views/to-watch-view.md) - Design for the to-watch library view.
 * ✅ [Watched View](/design/screens/library-views/watched-view.md) - Design for the watched library view.
+* ✅ [Read Failure State](/design/screens/library-views/read-failure-state.md) - Design for the local-storage read-failure state, shared by both views.

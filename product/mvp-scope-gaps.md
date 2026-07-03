@@ -36,6 +36,9 @@ A working backlog for iterative Q&A sessions to give the core loop the same leve
 - [x] **Match semantics.** Resolved: case-insensitive substring match against the title. See [Searching the User's Library](/product/user-journeys/searching-library.md).
 - [x] **Live-filter behavior.** Resolved: short debounce (~150–300ms) after the user stops typing, rather than instant per-keystroke filtering. See [Searching the User's Library](/product/user-journeys/searching-library.md).
 
+### Cross-cutting
+- [x] **Write interaction model (found during a `/product` readiness audit, not the original backlog).** Resolved: MVP uses a blocking model — the triggering dialog shows a loading state and waits for the write to succeed before closing, matching the Add API Key Dialog's precedent. Optimistic-with-toast is deferred post-MVP (needs a toast system + revert logic MVP doesn't have time for). See [Data Persistence Errors](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change).
+
 ## How to use this
 
 Pull one item at a time into a normal interview round (same pattern as the `/product` and `/design` "least confident" sessions) — resolve it, update the relevant journey doc, then check it off here. This doc stays open until the core loop has had a comparable amount of scrutiny to the API key flow, not until every box is checked — some of these may reasonably resolve as "not needed for MVP," which is a fine outcome as long as it's a deliberate answer rather than silence.

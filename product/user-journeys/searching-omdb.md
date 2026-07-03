@@ -30,7 +30,7 @@ status: confirmed
    - If the movie is already in the user's library: indicate this, and present the actions **reassign status** (to the opposite of the current status), **remove from library**, or **cancel**.
    - If the movie is not in the user's library: present the actions **set as "to watch"**, **set as "watched"**, or **cancel**.
    - **Match rule:** a user cannot add a duplicate entry to their library. How a duplicate is identified is an engineering concern, not covered here.
-2. Once an action completes, the card updates in place within the current results list to reflect the new state (library membership and/or status) — it remains visible and does not require a re-search to reflect the change. If the save fails, see [Data Persistence Errors](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change) — this is distinct from the network/API/auth errors covered below.
+2. Picking an action shows a brief loading state in the dialog and blocks until the write actually succeeds (see [Data Persistence Errors](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change) for the full model and the failure case) — nothing on the card changes until then. Once it succeeds, the dialog closes and the card updates in place within the current results list to reflect the new state (library membership and/or status) — it remains visible and does not require a re-search to reflect the change. This is distinct from the network/API/auth errors covered below, which are about the search itself, not this save.
 3. The user can continue actioning search results until they are done.
 
 ### User Invokes a Second Search with Previous Results Present
