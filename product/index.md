@@ -12,3 +12,8 @@ What the app must do — the product owner's area. Covers scope (what's in vs. o
 # User Journeys
 
 * [User Journeys](/product/user-journeys/index.md) - Index of all expected user behaviour flows.
+
+# Tracking
+
+* [Open Questions](/product/open-questions.md) - Rolling tracker of unresolved contradictions and ambiguities.
+* [MVP Scope Gaps — Core Loop Focus](/product/mvp-scope-gaps.md) - Backlog for iterative Q&A sessions to rebalance depth toward the core tracking loop.

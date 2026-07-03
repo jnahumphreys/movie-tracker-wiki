@@ -36,6 +36,7 @@ status: not started | in progress | confirmed
 | How it's built — stack, architecture, dev tooling    | `engineering/` |
 | How it's verified — testing                          | `qa/`          |
 | How it's shipped/governed — deploy, CI, repo tooling | `devops/`      |
+| How we use AI/agentic workflows, agent skills, MCP tooling | `ai/`   |
 
 If unsure which folder, ask — don't guess and split it wrong later.
 

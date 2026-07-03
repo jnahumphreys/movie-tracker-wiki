@@ -3,7 +3,7 @@ type: User Journey
 title: Searching the OMDb to Add a Movie
 description: Expected behaviour for searching and adding movies via the OMDb API.
 tags: [product, user-journey]
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 status: confirmed
 ---
 
@@ -20,6 +20,7 @@ status: confirmed
 ## Return of Search Results
 
 1. No more than 10 results are returned, displayed as a list of movie cards showing: the movie poster image (or a fallback placeholder), the movie title, the release year, and the runtime. Each card contains a button to invoke an action (see "Post-Search Actions" below). Once results return, the search button is re-enabled and the search input retains the original query.
+2. If the full 10 results are returned (more may exist beyond the cap), indicate this to the user rather than truncating silently. See [Search Results](/design/screens/omdb-search/search-results.md#truncation-hint) for the design. Loading additional results beyond 10 (lazy-loading/infinite scroll) is a post-MVP feature — see [Future Considerations](/product/future-considerations.md).
 
 ## Post-Search Actions
 
@@ -28,7 +29,9 @@ status: confirmed
 1. The user clicks the action button on a movie card, which opens a UI of available actions:
    - If the movie is already in the user's library: indicate this, and present the actions **reassign status** (to the opposite of the current status), **remove from library**, or **cancel**.
    - If the movie is not in the user's library: present the actions **set as "to watch"**, **set as "watched"**, or **cancel**.
-2. The user can continue actioning search results until they are done.
+   - **Match rule:** a user cannot add a duplicate entry to their library. How a duplicate is identified is an engineering concern, not covered here.
+2. Once an action completes, the card updates in place within the current results list to reflect the new state (library membership and/or status) — it remains visible and does not require a re-search to reflect the change. If the save fails, see [Data Persistence Errors](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change) — this is distinct from the network/API/auth errors covered below.
+3. The user can continue actioning search results until they are done.
 
 ### User Invokes a Second Search with Previous Results Present
 
@@ -45,5 +48,7 @@ status: confirmed
 ## Error
 
 1. If an error occurs, indicate this via the message UI. This could be a network error, an API error, or an authentication/API key error.
+2. For an authentication/API key error specifically, the message UI offers a way to fix the key directly (opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md)) — see [App First Launch](/product/user-journeys/app-first-launch.md) for why this is discovered here rather than checked proactively.
+3. **After a successful key fix at MVP:** the user returns to the search view with their original query still retained in the input, and re-runs the search manually — it does not re-run automatically. Auto-retrying the retained query on a successful key fix is a post-MVP enhancement — see [Future Considerations](/product/future-considerations.md).
 
 Design reference: [OMDb Search](/design/screens/omdb-search/index.md)

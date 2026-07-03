@@ -13,7 +13,7 @@ status: confirmed
 
 Below the [top bar and nav row](/design/components/top-bar-and-navigation.md), in scroll order:
 
-1. **Search input** — scrolls away with the list (not sticky). shadcn Input with a leading Lucide `search` icon, no search button (filtering is live). Placeholder: "Search your to-watch list...". Disabled while the view has zero movies, enabled once at least one movie is present.
+1. **Search input** — scrolls away with the list (not sticky). shadcn Input with a leading Lucide `search` icon, no search button (filtering is live). Placeholder: "Search your to-watch list...". Disabled while the view has zero movies, enabled once at least one movie is present. No dedicated clear button at MVP — backspace manually or navigate away to reset; a clear (×) button is a considered, deferred addition, see [Future Considerations](/product/future-considerations.md).
 2. **Movie Card list** — each [Movie Card](/design/components/movie-card.md) rendered as its own bordered container (shadcn Item with image), with a balanced gap between cards — not a plain divided list.
 
 **Sort order:** most recently status-changed first (i.e. the most recently marked "to watch" appears at the top).

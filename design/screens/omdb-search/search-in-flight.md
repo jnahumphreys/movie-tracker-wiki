@@ -14,7 +14,7 @@ Behaviour spec: [Search in Flight](/product/user-journeys/searching-omdb.md#sear
 ## Visual treatment
 - The search button's icon swaps to a spinning Lucide **`loader-circle`** (see [Iconography](/design/foundations/iconography.md)) for the duration of the search.
 - The input and button both take the same disabled treatment already established in [Search Input](/design/screens/omdb-search/search-input.md) — reduced opacity, muted color — and reject focus/typing while in flight, so a query can't be edited or resubmitted mid-search.
-- The message area (initial prompt, per [Searching the OMDb to Add a Movie](/product/user-journeys/searching-omdb.md)) swaps to the in-flight copy below for the duration of the search.
+- The message area (initial prompt, per [Pre-Search State](/design/screens/omdb-search/pre-search-state.md)) swaps to the in-flight copy below for the duration of the search.
 
 ## Copy
 - **Title:** "Rolling the film..."

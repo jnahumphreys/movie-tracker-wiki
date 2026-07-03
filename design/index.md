@@ -13,7 +13,7 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 * ✅ [Tokens & Theming](/design/foundations/tokens-and-theming.md) - Colour tokens and light/dark theming approach.
 * ✅ [Iconography](/design/foundations/iconography.md) - Icon library and placeholder logo mark.
 * ✅ [Branding](/design/foundations/branding.md) - App name and wordmark treatment.
-* 🚧 [Copy & Tone](/design/foundations/copy-and-tone.md) - Voice, tone, and confirmed UI copy.
+* ✅ [Copy & Tone](/design/foundations/copy-and-tone.md) - Voice, tone, and confirmed UI copy.
 * ✅ [Viewports & Breakpoints](/design/foundations/viewports-and-breakpoints.md) - Target viewport and breakpoint scope for MVP.
 * ✅ [Accessibility](/design/foundations/accessibility.md) - Accessibility conformance target and outstanding checks.
 
@@ -23,6 +23,7 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 * ✅ [Movie Card](/design/components/movie-card.md) - Shared card used across library and search views.
 * ✅ [Movie Actions Dialog](/design/components/movie-actions-dialog.md) - Dialog for reassigning status, removing, or deleting a movie.
 * ✅ [Add API Key Dialog](/design/components/add-api-key-dialog.md) - Dialog for entering the OMDb API key.
+* ✅ [Dialog Conventions](/design/components/dialog-conventions.md) - Shared layout and dismiss-behaviour pattern for all dialogs.
 
 # Screens
 

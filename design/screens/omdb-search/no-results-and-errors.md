@@ -23,9 +23,11 @@ OMDb-search-specific — covers network, API, and auth/key errors per the behavi
 
 | Cause | Title | Subtitle |
 | --- | --- | --- |
-| Missing/invalid API key | "Cut! That's a blooper." | "Add your OMDb API key to keep the cameras rolling." |
+| Invalid API key | "Cut! That's a blooper." | "That key doesn't look right — update it to keep the cameras rolling." |
 | No connection | "Who turned out the lights?" | "Looks like you're offline. Check your connection and try again." |
 | Other API error | "Cut! That's a blooper." | "Something went wrong on our end. Give it another take." |
+
+This row's title, icon, and action button are also reused as [Pre-Search State's "no key set" variant](/design/screens/omdb-search/pre-search-state.md#variant-no-key-set) — that variant is the only place a genuinely *missing* key surfaces (this table row only fires for an *invalid* one, since the search input is disabled entirely while no key is stored, see [App First Launch](/product/user-journeys/app-first-launch.md)). **The subtitle differs between the two** — "missing" and "invalid" aren't the same problem, so they no longer share subtitle copy; see that doc for its own wording.
 
 ## Visual treatment
 All four states use the shadcn **Empty** component, centered in the results area at [360px](/design/foundations/viewports-and-breakpoints.md): icon → title → subtitle, with an optional action button.
@@ -36,16 +38,16 @@ Icon sits on the same muted/secondary-token background block used for the [Movie
 | State | Lucide icon |
 | --- | --- |
 | No results found | `search-x` |
-| Missing/invalid API key | `key-round` |
+| Invalid API key | `key-round` |
 | No connection | `wifi-off` |
 | Other API error | `circle-alert` |
 
 ### Action button
-Only the missing/invalid API key state gets an action: an **"Add API key"** button in the Empty component's action slot, opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md) directly from the error — matching that dialog's own note that it's shown "wherever a key is currently missing... or the OMDb view if a previously-saved key is gone." The other three states are message-only (no button).
+Only the invalid API key state gets an action: an **"Add API key"** button in the Empty component's action slot, opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md) directly from the error. See the dialog's own doc for its live-validation behaviour and what happens to this search on a successful fix. The other three states are message-only (no button).
 
 ### Spacing at 360px
 - Icon badge: 48×48px, centered.
 - Icon-to-title gap: 16px.
 - Title-to-subtitle gap: 8px.
-- Subtitle-to-action-button gap (missing-key state only): 16px.
+- Subtitle-to-action-button gap (invalid-key state only): 16px.
 - Page horizontal margin: 16px each side (content width 328px), matching [Search Results](/design/screens/omdb-search/search-results.md#spacing-at-360px).

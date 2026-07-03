@@ -14,6 +14,8 @@ status: confirmed
 
 Both light and dark mode are in scope for every screen — design side-by-side, not sequentially.
 
+**Theme switching:** at MVP, the app strictly follows the user's OS/system setting — there is no in-app manual toggle to override it. A manual light/dark switch is a considered, deferred addition — see [Future Considerations](/product/future-considerations.md).
+
 ## Typography
 - **Font:** Noto Serif Variable (`@fontsource-variable/noto-serif`), applied app-wide via `font-serif` on `html` — this is both the heading font (`--font-heading` aliases to `--font-serif`) and the body font. There is no separate sans-serif body face.
 - This is the "title font" referenced in [Branding](/design/foundations/branding.md) and [Top Bar & Navigation](/design/components/top-bar-and-navigation.md) — same face used throughout, not just the app title.

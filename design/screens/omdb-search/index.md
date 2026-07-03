@@ -7,6 +7,7 @@ Broken into sub-documents because of its scope — distinct search, loading, res
 # Sub-screens
 
 * ✅ [Search Input](/design/screens/omdb-search/search-input.md) - Search input design for the OMDb search screen.
+* ✅ [Pre-Search State](/design/screens/omdb-search/pre-search-state.md) - Empty-state design for the results area before any search.
 * ✅ [Search In Flight](/design/screens/omdb-search/search-in-flight.md) - Loading-state design while a search is in progress.
 * ✅ [Search Results](/design/screens/omdb-search/search-results.md) - Search results list design.
 * ✅ [Post-Search Actions](/design/screens/omdb-search/post-search-actions.md) - Design for the actions dialog opened from a search result.

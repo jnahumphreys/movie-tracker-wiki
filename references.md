@@ -48,3 +48,6 @@ Every external link used across the wiki, collated for quick lookup.
 35. [Playwright MCP](https://playwright.dev/mcp)
 36. [OMDb API — Get a free API key](https://www.omdbapi.com/apikey.aspx)
 37. [Fontsource — Noto Serif Variable](https://fontsource.org/fonts/noto-serif)
+38. [Anthropic Product Management plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management)
+39. [agile-product-owner skill](https://github.com/alirezarezvani/claude-skills/blob/main/product-team/agile-product-owner/SKILL.md)
+40. [pm-skills marketplace](https://github.com/phuryn/pm-skills)

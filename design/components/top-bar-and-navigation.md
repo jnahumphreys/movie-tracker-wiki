@@ -17,7 +17,7 @@ Two-row layout at the [360px working viewport](/design/foundations/viewports-and
 - Count badge: single badge, far right of the top bar.
   - Shows the count for whichever library view is currently active — `to watch` count while on To Watch, `watched` count while on Watched.
   - Hidden entirely on the `OMDb` view.
-  - **Not shown when the library is empty** (confirmed for the first-launch state).
+  - **Hidden only when the whole library is empty** (zero movies across both `to watch` and `watched` — the first-launch state). Otherwise, always shown for the active view, **including "0"** — e.g. if `watched` has movies but `to watch` doesn't, the badge still reads "0" while on the To Watch view.
   - Updates instantly when the count changes — no animation/transition.
   - Capped display at `99+` for counts over 99.
 

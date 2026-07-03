@@ -24,14 +24,15 @@ Checked every [token](/design/foundations/tokens-and-theming.md) text/background
 | `primary-foreground` on `primary` (primary buttons) | 16.38:1 | 13.81:1 |
 | `secondary-foreground` on `secondary` (secondary buttons, badges) | 15.37:1 | 13.79:1 |
 | `destructive-foreground` on `destructive` (danger buttons) | 4.60:1 | 5.86:1 |
+| `foreground` on `muted` ([OMDb Search truncation hint](/design/screens/omdb-search/search-results.md#visual-treatment)) | 17.76:1 | 13.79:1 |
 
 The `destructive-foreground` token didn't exist before this audit — see [Tokens & Theming — Destructive button text](/design/foundations/tokens-and-theming.md#destructive-button-text) for the fix and why it reuses `primary-foreground`'s per-mode values rather than a flat colour.
 
-### Known gaps (flagged, accepted for MVP)
-Two token pairings fail AA and are being left as-is for now rather than reworked:
+### Known gaps (flagged, required follow-up)
+Two token pairings fail AA. Rather than patching the token values blindly, both are tracked as **required to resolve during the Figma design phase**, once we can see the actual visual impact of a fix — see [Open Questions](/design/open-questions.md).
 
-- **`muted-foreground` fails normal-text AA in light mode** — 4.26:1 on `background`, 3.86:1 on `muted` (both need 4.5:1). Both clear the 3:1 large-text/non-text threshold. **Constraint going forward:** don't use `muted-foreground` for normal-size body/label text in light mode — only for large text (≥18px) or non-text UI (icons, borders). Any future doc proposing small `muted-foreground` text should flag it as a violation, not use it as-is.
-- **Light-mode focus ring is under the 3:1 UI-component minimum** — `--ring` on `background` measures 2.32:1 at full opacity, and the base stylesheet applies it at 50% (`outline-ring/50`), which weakens it further. Dark mode is fine (4.60:1). Left open rather than fixed now.
+- **`muted-foreground` fails normal-text AA in light mode** — 4.26:1 on `background`, 3.86:1 on `muted` (both need 4.5:1). Both clear the 3:1 large-text/non-text threshold. **Constraint until resolved:** don't use `muted-foreground` for normal-size body/label text in light mode — only for large text (≥18px) or non-text UI (icons, borders). Any future doc proposing small `muted-foreground` text should flag it as a violation, not use it as-is.
+- **Light-mode focus ring is under the 3:1 UI-component minimum** — `--ring` on `background` measures 2.32:1 at full opacity, and the base stylesheet applies it at 50% (`outline-ring/50`), which weakens it further. Dark mode is fine (4.60:1).
 
 ## Touch target sizing
 **44×44px minimum** for all tappable elements (movie card action button, nav buttons, search button, dialog buttons) — the Apple HIG / WCAG 2.1 AAA size. WCAG 2.1 AA itself has no minimum target size criterion (that's AAA in 2.1, or 24×24px at AA in the newer WCAG 2.2), but the app is explicitly [mobile/touch-first](/design/foundations/viewports-and-breakpoints.md) per [MVP Requirements](/product/mvp-requirements.md), so 44×44px is adopted as a practical baseline beyond the formal minimum.

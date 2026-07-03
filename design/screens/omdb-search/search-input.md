@@ -18,4 +18,7 @@ Single-row button group input: text field with an adjoined search button, per th
 - **Placeholder:** "What are we watching tonight?" — playful tone, consistent with the [No Results & Errors](/design/screens/omdb-search/no-results-and-errors.md) copy voice.
 
 ## Disabled state
-Search button is disabled when the input is empty, and again once a search is submitted (see [Search In Flight](/design/screens/omdb-search/search-in-flight.md)). Standard shadcn disabled treatment — reduced opacity and muted color, no icon change.
+The entire input (text field + search button) is disabled while no API key is stored — see [Pre-Search State — no key set](/design/screens/omdb-search/pre-search-state.md#variant-no-key-set). Once a key is set, the search button specifically is disabled when the input is empty, and again once a search is submitted (see [Search In Flight](/design/screens/omdb-search/search-in-flight.md)). Standard shadcn disabled treatment — reduced opacity and muted color, no icon change.
+
+## Clearing a query
+No dedicated clear button at MVP — resetting the input means backspacing manually or navigating away (which purges it, per [Searching the OMDb](/product/user-journeys/searching-omdb.md)). A clear (×) button is a considered, deferred addition — see [Future Considerations](/product/future-considerations.md).

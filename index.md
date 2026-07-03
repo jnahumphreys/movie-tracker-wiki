@@ -16,9 +16,10 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started · This mea
 
 * [Product](/product/index.md) - What the app must do: MVP requirements, future scope, user journeys.
 * [Design](/design/index.md) - How it looks and behaves visually: tokens, components, screens.
-* [Engineering](/engineering/index.md) - How it's built: architecture, stack, AI/MCP tooling.
+* [Engineering](/engineering/index.md) - How it's built: architecture, stack.
 * [QA](/qa/index.md) - How it's verified: testing strategy.
 * [DevOps](/devops/index.md) - How it's shipped and governed: deployment, CI/CD, tooling.
+* [AI](/ai/index.md) - How we use AI and agentic workflows: agent skills, MCP tooling.
 
 # Reference
 

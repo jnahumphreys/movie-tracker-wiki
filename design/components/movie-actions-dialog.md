@@ -17,11 +17,7 @@ Maps to the shadcn **Dialog** component. Behaviour (which actions appear when) i
 - If opened from an OMDb search result for a movie **already in the library**: two [Badge](https://ui.shadcn.com/docs/components/radix/badge) components appear with the title — "In your library" and the movie's current status ("To Watch" / "Watched"). This variant then behaves identically to the library-view variant below (reassign/remove/cancel) — guards against creating duplicate library entries.
 
 ## Layout
-- Buttons are stacked, full-width, in this order:
-  1. Status action(s) — **primary (`default`) variant**.
-  2. Destructive action (if present) — **danger (`destructive`) variant**.
-  3. A horizontal [Separator](https://ui.shadcn.com/docs/components/radix/dialog).
-  4. "Cancel" — **secondary variant**.
+Follows [Dialog Conventions](/design/components/dialog-conventions.md#button-layout): status action(s) primary, destructive action danger, divider, Cancel secondary.
 
 ## Copy by variant
 
@@ -37,8 +33,13 @@ Maps to the shadcn **Dialog** component. Behaviour (which actions appear when) i
 - *(divider)*
 - "Cancel" — secondary.
 
+Both actions are intentionally equal-weight (both `primary` variant, no visual hierarchy between them) — neither status is a more "correct" default than the other, so this is a confirmed decision, not an oversight.
+
 ### OMDb search result — already in library
 - Same as "Library view" variant above: "Mark as Watched" / "Mark as To Watch" (primary), "Remove from Library" (danger), divider, "Cancel" (secondary).
 
 ## Deletion behaviour
 - "Delete Movie" / "Remove from Library" act **immediately** on tap — no second confirmation step for MVP. A two-step "are you sure?" confirmation is a possible post-MVP enhancement — see [Future Considerations](/product/future-considerations.md).
+
+## Dismiss behaviour
+Follows [Dialog Conventions](/design/components/dialog-conventions.md#dismiss-behaviour) — no dialog-specific exceptions.

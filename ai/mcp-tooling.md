@@ -1,15 +1,15 @@
 ---
 type: AI Tooling
-title: AI & MCP Tooling
+title: MCP Tooling
 description: Context7 docs and MCP servers recommended for this stack.
-tags: [engineering, ai, mcp]
+tags: [ai, mcp, engineering]
 timestamp: 2026-07-02T00:00:00Z
 status: confirmed
 ---
 
-⬅ [Engineering](/engineering/index.md)
+⬅ [AI](/ai/index.md)
 
-# AI & MCP Tooling
+# MCP Tooling
 
 ## Documentation via Context7
 
@@ -32,4 +32,4 @@ Leverage MCP servers for documentation via [Context7](https://context7.com/), co
 - **[Storybook MCP](https://storybook.js.org/docs/ai/mcp/overview)** (official, React) — gives the agent live knowledge of actual project components/props, and can generate and self-test stories with accessibility checks.
 - **[GitHub MCP server](https://github.com/modelcontextprotocol/servers)** (official) — repository, issue, and pull request management by natural language.
 
-See also: [Future Considerations](/engineering/future-considerations.md) for MCP servers relevant later (Chrome DevTools) and [QA — Testing Strategy](/qa/testing-strategy.md) for Playwright MCP.
+See also: [Engineering — Future Considerations](/engineering/future-considerations.md) for MCP servers relevant later (Chrome DevTools) and [QA — Testing Strategy](/qa/testing-strategy.md) for Playwright MCP.

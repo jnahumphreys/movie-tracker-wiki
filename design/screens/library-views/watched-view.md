@@ -15,7 +15,7 @@ As [To Watch View](/design/screens/library-views/to-watch-view.md), scoped to `w
 
 Same structure as [To Watch View](/design/screens/library-views/to-watch-view.md#populated-layout), scoped to `watched`:
 
-1. **Search input** — same treatment (shadcn Input, leading `search` icon, no button, scrolls with the list, disabled when empty). Placeholder: "Search your watched list...".
+1. **Search input** — same treatment (shadcn Input, leading `search` icon, no button, scrolls with the list, disabled when empty). Placeholder: "Search your watched list...". No dedicated clear button at MVP — see [To Watch View](/design/screens/library-views/to-watch-view.md#populated-layout) / [Future Considerations](/product/future-considerations.md).
 2. **Movie Card list** — same bordered-card treatment with balanced gaps.
 
 **Sort order:** most recently status-changed first (i.e. the most recently marked "watched" appears at the top).
