@@ -6,7 +6,7 @@ What the app must do — the product owner's area. Covers scope (what's in vs. o
 
 # Requirements
 
-* [MVP Requirements](/product/mvp-requirements.md) - Functional scope for the Movie Tracker MVP.
+* ✅ [MVP Requirements](/product/mvp-requirements.md) - Functional scope for the Movie Tracker MVP.
 * [Future Considerations](/product/future-considerations.md) - Product scope explicitly deferred beyond MVP.
 
 # User Journeys
