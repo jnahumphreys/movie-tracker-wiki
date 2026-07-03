@@ -25,8 +25,7 @@ Fully deterministic checks only. No judgment calls. Safe to run unattended (manu
 
 On top of enforcing `AGENTS.md` §1, §2, and the status-emoji parity rule in §5, audit mode also checks **link integrity**, which isn't defined anywhere else:
 - Every bundle-absolute internal link resolves to a file that actually exists at that path.
-- Every external link (in `/references.md` or inline) is reachable — best-effort; skip silently if the environment running the audit has no network access, don't escalate a network failure as a dead link.
-- **`/references.md` ledger sync**: every outbound (`http(s)://`) link cited anywhere in the wiki — inline markdown links or a concept's `resource:` frontmatter field — has a matching entry in `/references.md`. This direction (missing entry) is mechanical. The reverse — a `/references.md` entry with no hyperlink citation elsewhere — is *not* automatically "stale": this wiki's convention is to often name a tool/component/library in prose (e.g. "shadcn Empty component", "Noto Serif Variable") without inlining its URL at every mention, relying on `/references.md` as the one place the link lives. Confirming a link is genuinely orphaned (vs. just prose-cited without a hyperlink) requires reading the surrounding text, which is a judgment call, not a mechanical match — see auto-fix/escalation split below.
+- Every external link (inline, or in a concept's `resource:` frontmatter) is reachable — best-effort; skip silently if the environment running the audit has no network access, don't escalate a network failure as a dead link. (A former `/references.md` ledger, and the sync check that kept it current, were dropped 2026-07-03 as too laborious to maintain — external links are now checked only where they're actually cited, not against a central list.)
 - **Code-fence formatting** (`AGENTS.md` §1): any multiline code-like content (shell commands, JSON/YAML/CSS/JS/TS, directory trees, config file contents, etc.) is inside a ` ``` ` fence with a language annotation — never a bare ` ``` ` and never left unfenced. Single-line inline code (`` `like this` ``) is out of scope; it was never required to fence.
 
 ### Auto-fix rules
@@ -37,7 +36,6 @@ Only fix when the fix is unambiguous. Specifically:
 - **`type` value is a near-miss typo** of a taxonomy entry (checked against `AGENTS.md` §2 directly, e.g. `Api Reference` vs `API Reference`) — correct to the canonical value.
 - **Status-emoji mismatch** — fix per the parity rule in `AGENTS.md` §5.
 - **Missing `timestamp`** where it can be derived from the file's last commit date — fill it in.
-- **`/references.md` missing entry**: a cited outbound link (inline or `resource:`) not yet in `/references.md` — append it as a new numbered entry, using the link text from where it's cited (first occurrence in file-path alphabetical order, if cited with different text in more than one place) as the reference title. Renumber the list after any addition so numbering stays sequential. Adding is low-risk (nothing is lost), so this direction is a straight auto-fix.
 - **Bare code fence, language unambiguous from content**: a ` ``` ` with no language tag wrapping content whose language is obvious (shell/env output, JSON, YAML, CSS, a directory tree, etc.) — add the tag (`bash`, `json`, `yaml`, `css`, `text` for trees/plain output, etc.). If the content's language genuinely isn't clear, don't guess — escalate instead.
 
 Every auto-fix gets logged to `/log.md` (dated entry, `**Fix**` verb) so it's visible, even though no one approved it in the moment.
@@ -50,7 +48,6 @@ Anything not covered by an auto-fix rule above gets appended to `/open-questions
 - A `type` value that isn't a near-miss of the `AGENTS.md` §2 taxonomy — looks like a genuinely new type, which needs a human decision on whether to add it or reuse an existing one.
 - A structural violation that implies a rename or restructure (e.g. a `README.md` that should become `index.md`, or a doc that's grown too broad and should become its own sub-folder) — these can break other files' links if acted on automatically, so they're always escalated.
 - Anything that looks like a cross-document contradiction or duplication noticed in passing. Audit mode does **not** go looking for these on its own — see Semantic mode below — but if one is obvious while doing the mechanical sweep, note it rather than discard it.
-- A `/references.md` entry with no matching hyperlink citation elsewhere in the wiki. Check first whether its subject is still named in prose without a link (common in this wiki — see the ledger-sync check above); if so, escalate as "possibly still relevant, just not hyperlinked" rather than removing it. Never delete a `/references.md` entry as an auto-fix — the risk of dropping a genuinely-still-used resource is higher than the cost of one extra open question.
 - A bare code fence whose language can't be confidently inferred from its content (e.g. ambiguous pseudo-code, or content that's a mix of more than one language/format).
 
 Each escalation entry in `/open-questions.md` should include: which doc(s) are involved, what was found, and why it couldn't be auto-resolved.

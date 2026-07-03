@@ -22,6 +22,8 @@ metadata:
   category: library-and-api-reference
 ---
 
+⬅ [AI](/ai/index.md)
+
 # Open Knowledge Format (OKF)
 
 OKF is a vendor-neutral, open spec (v0.1, announced June 12, 2026 by Sam McVeety & Amir Hormati at Google Cloud) for representing knowledge as a directory of markdown files with YAML frontmatter. No SDK required — if you can `cat` a file, you can read OKF.
@@ -53,7 +55,7 @@ For the full spec, see [references/spec-v01.md](references/spec-v01.md).
 ## Quick Reference — Frontmatter Fields
 
 | Field         | Required?   | Description                                                                                     |
-| ------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| ------------- | ----------- | ------------------------------------------------------------------------------------------------- |
 | `type`        | **YES**     | Kind of concept (free-form string, e.g. `BigQuery Table`, `Metric`, `Playbook`, `API Endpoint`) |
 | `title`       | Recommended | Human-readable display name                                                                     |
 | `description` | Recommended | One-sentence summary                                                                            |
@@ -66,7 +68,7 @@ Additional producer-defined keys are allowed. Never reject unknown fields.
 ## Reserved Filenames
 
 | File       | Purpose                                      | Has frontmatter? |
-| ---------- | -------------------------------------------- | ---------------- |
+| ---------- | --------------------------------------------- | ---------------- |
 | `index.md` | Directory listing for progressive disclosure | NO\*             |
 | `log.md`   | Change history, newest first                 | NO               |
 
@@ -75,7 +77,7 @@ Additional producer-defined keys are allowed. Never reject unknown fields.
 ## Conventional Body Headings
 
 | Heading       | When to use                                     |
-| ------------- | ----------------------------------------------- |
+| ------------- | ------------------------------------------------ |
 | `# Schema`    | Data assets — describe columns/fields           |
 | `# Examples`  | Show concrete usage (code blocks, queries)      |
 | `# Citations` | List external sources backing claims (numbered) |
@@ -294,7 +296,7 @@ For data assets, add `# Schema` with a columns table:
 # Schema
 
 | Column        | Type   | Description                             |
-| ------------- | ------ | --------------------------------------- |
+| ------------- | ------ | ---------------------------------------- |
 | `order_id`    | STRING | Unique identifier                       |
 | `customer_id` | STRING | FK to [customers](/tables/customers.md) |
 ```

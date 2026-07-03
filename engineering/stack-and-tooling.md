@@ -14,7 +14,7 @@ status: confirmed
 - Web-based single page application, running entirely on the client.
 - Fetches data from the OMDb API and caches movie data to the client session — see [Data Caching & Persistence](/engineering/data-caching-and-persistence.md) for how.
 - User library data and preferences persist across sessions, using the browser's local storage API.
-- **Stack:** npm, Vite, TypeScript, React, shadcn/Tailwind CSS, [Zustand](https://zustand.docs.pmnd.rs/) (slices pattern) with Suspense for client state management. Confirmed 2026-07-03, replacing an earlier plain Context+Reducer plan — see [State Management](/engineering/state-management.md) for why slices specifically make this workable.
+- **Stack:** npm, Vite, TypeScript, React, [shadcn](/design/foundations/design-system.md)/Tailwind CSS, [Zustand](https://zustand.docs.pmnd.rs/) (slices pattern) with Suspense for client state management. Confirmed 2026-07-03, replacing an earlier plain Context+Reducer plan — see [State Management](/engineering/state-management.md) for why slices specifically make this workable.
 - **Browser support:** last 2 versions of evergreen browsers (Chrome, Firefox, Safari, Edge) — no legacy-browser workarounds needed. Post-MVP, formalise this with a [browserslist](https://github.com/browserslist/browserslist) config rather than an implicit convention.
 - Track changes in git, using per-feature branching and [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) messages — see [Contribution & Testing Workflow](/engineering/onboarding/contribution-and-testing-workflow.md) for the practical branch-naming/PR process.
 - Align to [Semantic Versioning (SemVer)](https://semver.org/).

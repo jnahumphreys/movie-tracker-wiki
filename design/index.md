@@ -10,6 +10,7 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 
 # Foundations
 
+* ✅ [Design System](/design/foundations/design-system.md) - shadcn is this app's design system — the source-of-truth statement other docs point to instead of restating.
 * ✅ [Tokens & Theming](/design/foundations/tokens-and-theming.md) - Colour tokens and light/dark theming approach.
 * ✅ [Iconography](/design/foundations/iconography.md) - Icon library and placeholder logo mark.
 * ✅ [Branding](/design/foundations/branding.md) - App name and wordmark treatment.

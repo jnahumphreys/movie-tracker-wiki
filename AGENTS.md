@@ -13,7 +13,7 @@ status: living document
 
 Policy for any agent (or human) working in this wiki. This file is a non-reserved OKF concept like any other — it carries its own frontmatter (`type: Agent Policy`, new to the taxonomy in §2) rather than being exempt from the rules it defines.
 
-Read [OKF-SKILL.md](/OKF-SKILL.md) first for OKF mechanics (validation, bundle creation, enrichment) — this file doesn't restate those. It covers what's specific to *this* bundle: how it's laid out, what its frontmatter actually looks like in practice, and how an agent should work with James inside it.
+Read [OKF-SKILL.md](/ai/OKF-SKILL.md) first for OKF mechanics (validation, bundle creation, enrichment) — this file doesn't restate those. It covers what's specific to *this* bundle: how it's laid out, what its frontmatter actually looks like in practice, and how an agent should work with James inside it.
 
 ## 1. Structure
 
@@ -21,7 +21,7 @@ Read [OKF-SKILL.md](/OKF-SKILL.md) first for OKF mechanics (validation, bundle c
 
 - `index.md` — one per directory with more than one document, for progressive disclosure. No frontmatter, except the bundle-root `index.md`, which may declare `okf_version: "0.1"`. Entries: `* <status-emoji> [Title](path) - description`, description pulled from the linked doc's frontmatter.
 - `log.md` — single change history at the bundle root, newest-first, ISO 8601 date headings. Each entry leads with a bold verb (`**Create**`, `**Update**`, `**Fix**`, `**Conformance**`) — convention, not a fixed vocabulary.
-- `open-questions.md` and `references.md` — also root-level and singular, not per-folder. An earlier per-folder version of the open-questions tracker (`product/open-questions.md`, `design/open-questions.md`) was consolidated into the single wiki-wide one; don't recreate folder-local copies.
+- `open-questions.md` — also root-level and singular, not per-folder. An earlier per-folder version of the open-questions tracker (`product/open-questions.md`, `design/open-questions.md`) was consolidated into the single wiki-wide one; don't recreate folder-local copies. (A former `references.md` ledger — every external link, collated in one place — was dropped 2026-07-03 as too laborious to maintain; citations now live only inline or in a concept's `resource:` frontmatter, per doc.)
 
 **Folder routing** — where new content belongs:
 
@@ -34,7 +34,7 @@ Read [OKF-SKILL.md](/OKF-SKILL.md) first for OKF mechanics (validation, bundle c
 | `/devops/` | How it's shipped and governed — deployment, CI/CD, tooling | |
 | `/ai/` | How AI/agentic workflows are used — agent skills, MCP tooling | Behaviour lives in Product; implementation lives in Engineering |
 
-Root-level files (`index.md`, `log.md`, `open-questions.md`, `references.md`, `OKF-SKILL.md`, `AGENTS.md`) sit outside any area folder — they're wiki-wide, not domain-specific.
+Root-level files (`index.md`, `log.md`, `open-questions.md`, `AGENTS.md`) sit outside any area folder — they're wiki-wide, not domain-specific. `OKF-SKILL.md` lives at [/ai/OKF-SKILL.md](/ai/OKF-SKILL.md) — it's a Skill Reference like the rest of `/ai/`'s contents, not wiki-wide policy, even though `AGENTS.md` here leans on it for OKF mechanics.
 
 **Cross-linking** — bundle-absolute links (`/folder/file.md`) are preferred over relative ones; they survive files moving. Every non-root doc opens with a single back-link line before its `# Title`: `⬅ [Parent](/path/to/parent/index.md)`.
 
@@ -70,7 +70,7 @@ Two docs currently carry typo'd variants of these three, and seven consistently 
 
 This file is the policy layer: how agents should behave in this bundle, and what its local conventions actually are (folder routing, frontmatter reality, working process). It is not:
 
-- **OKF mechanics.** [OKF-SKILL.md](/OKF-SKILL.md) owns validation, bundle/concept creation, enrichment, and general authoring judgment — including where the line falls on splitting a broad topic into its own sub-folder. If a structural question isn't answered by §1 above, it's an OKF-SKILL.md question, not a gap in this file to patch with a new invented rule.
+- **OKF mechanics.** [OKF-SKILL.md](/ai/OKF-SKILL.md) owns validation, bundle/concept creation, enrichment, and general authoring judgment — including where the line falls on splitting a broad topic into its own sub-folder. If a structural question isn't answered by §1 above, it's an OKF-SKILL.md question, not a gap in this file to patch with a new invented rule.
 - **Audit procedure, tooling recommendations, or skill candidates.** [/ai/audit-process.md](/ai/audit-process.md), [/ai/mcp-tooling.md](/ai/mcp-tooling.md), and [/ai/agent-skills.md](/ai/agent-skills.md) own those respectively. This file points at them rather than restating their content — the wiki's own audit process treats a doc restating another doc's authoritative content as a duplication finding, and this file shouldn't commit the violation it expects other docs to avoid.
 
 ## 4. Editing autonomy

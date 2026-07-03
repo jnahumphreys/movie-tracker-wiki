@@ -34,7 +34,7 @@ A working backlog for iterative Q&A sessions to give the core loop the same leve
 
 ### Searching the User's Library
 - [x] **Match semantics.** Resolved: case-insensitive substring match against the title. See [Searching the User's Library](/product/user-journeys/searching-library.md).
-- [x] **Live-filter behavior.** Resolved: short debounce (~150–300ms) after the user stops typing, rather than instant per-keystroke filtering. See [Searching the User's Library](/product/user-journeys/searching-library.md).
+- [x] **Live-filter behavior.** Resolved: 250ms debounce after the user stops typing, rather than instant per-keystroke filtering — matches [Stack & Tooling](/engineering/stack-and-tooling.md)'s existing engineering-side commitment. See [Searching the User's Library](/product/user-journeys/searching-library.md).
 
 ### Cross-cutting
 - [x] **Write interaction model (found during a `/product` readiness audit, not the original backlog).** Resolved: MVP uses a blocking model — the triggering dialog shows a loading state and waits for the write to succeed before closing, matching the Add API Key Dialog's precedent. Optimistic-with-toast is deferred post-MVP (needs a toast system + revert logic MVP doesn't have time for). See [Data Persistence Errors](/product/user-journeys/data-persistence-errors.md#write-failure-saving-a-change).

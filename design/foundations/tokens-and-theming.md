@@ -10,6 +10,8 @@ status: confirmed
 
 # Tokens & Theming
 
+See [Design System](/design/foundations/design-system.md) for why shadcn is the baseline at all — this doc covers the token values and theming approach specifically.
+
 **Decision:** use the shadcn CSS token set below as-is — no brand accent colour. Palette stays neutral/grayscale.
 
 Both light and dark mode are in scope for every screen — design side-by-side, not sequentially.
