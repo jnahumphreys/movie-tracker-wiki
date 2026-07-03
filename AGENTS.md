@@ -8,6 +8,7 @@ This project maintains a wiki, conformant to the **Open Knowledge Format (OKF) v
 - **Only the root `index.md` has frontmatter** (`okf_version: "0.1"`). All other `index.md` files have none — just a short intro + bullet listings (`* [Title](/path.md) - description`).
 - **Every other `.md` file (a "concept") MUST have YAML frontmatter with a `type` field.** This is the one hard OKF requirement — never skip it.
 - **All internal links are bundle-absolute**, starting with `/` (e.g. `/product/mvp-requirements.md`), not relative (`../foo.md`). This survives files being moved.
+- **Any multiline code reference is a fenced code block with a language annotation** — ` ```bash `, ` ```json `, ` ```css `, ` ```text ` for directory trees or other non-language content, etc. — never a bare ` ``` ` or an unfenced indented block. Single-line inline code (`` `like this` ``) doesn't need fencing.
 - **Log significant changes in the root `log.md`** — dated entries, bold action verb (`**Create**`, `**Update**`), one line each.
 
 ## 2. Concept frontmatter template

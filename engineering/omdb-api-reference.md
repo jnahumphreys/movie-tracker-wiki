@@ -12,7 +12,16 @@ status: confirmed
 
 # OMDb API Reference
 
-Sample response from the OMDb API when searching for "Back to the Future":
+## Two different endpoints, two different response shapes
+
+OMDb has separate endpoints for a title/ID lookup vs. a search:
+
+- **`t=<title>` or `i=<imdbID>`** — single best-match lookup. Returns the full object below (Runtime, Genre, Plot, Ratings, etc.).
+- **`s=<title>`** — search, used for [Searching the OMDb](/product/user-journeys/searching-omdb.md)'s up-to-10-results list. Returns a much thinner `Search: [...]` array — each entry is only `Title`, `Year`, `imdbID`, `Type`, `Poster`, no Runtime or anything else.
+
+Since [MVP Requirements](/product/mvp-requirements.md) needs Runtime shown on search-result cards too (not just library cards), **the app follows `s=` with a `t=`/`i=` lookup for each of the up to 10 results returned**, so every card has full data before rendering. This means one search costs up to 11 API calls (1 search + up to 10 detail lookups), not 1 — a deliberate accuracy-over-quota tradeoff, confirmed 2026-07-03. This compounds the daily-quota risk covered in [Searching the OMDb — Error](/product/user-journeys/searching-omdb.md#error) (the "daily request limit reached" state is reached roughly 10x faster than a naive 1-call-per-search estimate would suggest).
+
+Sample response from the OMDb API (`t=`/`i=`, or a single enriched search result) when looking up "Back to the Future":
 
 ```json
 {

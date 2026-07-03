@@ -29,7 +29,7 @@ There's no server-side or build-time API key baked into the app — see [Archite
 
 For local dev convenience only, an optional `.env.local` shortcut pre-seeds local storage with a key on boot, so you're not re-entering it after every storage reset:
 
-```
+```env
 VITE_OMDB_API_KEY=your_key_here
 ```
 
