@@ -15,7 +15,7 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 * ✅ [Branding](/design/foundations/branding.md) - App name and wordmark treatment.
 * 🚧 [Copy & Tone](/design/foundations/copy-and-tone.md) - Voice, tone, and confirmed UI copy.
 * ✅ [Viewports & Breakpoints](/design/foundations/viewports-and-breakpoints.md) - Target viewport and breakpoint scope for MVP.
-* ⬜ [Accessibility](/design/foundations/accessibility.md) - Accessibility conformance target and outstanding checks.
+* ✅ [Accessibility](/design/foundations/accessibility.md) - Accessibility conformance target and outstanding checks.
 
 # Components
 
@@ -27,7 +27,7 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started. Anything t
 # Screens
 
 * 🚧 [First Launch & Empty States](/design/screens/first-launch-and-empty-states.md) - Empty-library and first-launch screen design.
-* ⬜ [OMDb Search](/design/screens/omdb-search/index.md) - Index of OMDb search sub-screens.
+* ✅ [OMDb Search](/design/screens/omdb-search/index.md) - Index of OMDb search sub-screens.
 * ✅ [Library Views](/design/screens/library-views/index.md) - Index of to-watch and watched screen designs.
 
 # Tracking

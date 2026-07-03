@@ -22,6 +22,9 @@ See [Watched View](/design/screens/library-views/watched-view.md) for full copy.
 ### No Results & Errors (OMDb search + library search)
 See [OMDb Search — No Results & Errors](/design/screens/omdb-search/no-results-and-errors.md) for full copy — covers the no-results message (shared with `to watch` / `watched` "no matches") and all OMDb error variants.
 
+### OMDb Search — In Flight
+See [OMDb Search — Search In Flight](/design/screens/omdb-search/search-in-flight.md) for full copy — "Rolling the film..." / "Searching for [query]...".
+
 ### Add API Key Dialog
 See [Add API Key Dialog](/design/components/add-api-key-dialog.md) for full copy.
 
@@ -30,4 +33,3 @@ See [Movie Actions Dialog](/design/components/movie-actions-dialog.md) for full 
 
 ## Not yet written
 - OMDb search view initial prompt (before first search)
-- OMDb search in-flight/loading message

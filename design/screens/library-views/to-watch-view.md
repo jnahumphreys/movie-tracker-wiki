@@ -24,5 +24,8 @@ Zero movies in `to watch` — reuses the copy from [First Launch & Empty States]
 ## "No matches" state (active search, no results)
 Copy shared with [OMDb Search — No Results & Errors](/design/screens/omdb-search/no-results-and-errors.md): "Plot Twist... no Results found!" / "We couldn't find a movie with that title."
 
-## Not yet covered
-- Exact spacing/sizing at 360px
+## Spacing at 360px
+- Page horizontal margin: **16px** each side (content width 328px).
+- Gap between the search input and the card list: **16px**.
+- Vertical gap between cards: **12px** (`gap-3`).
+- Card-internal spacing (poster size, padding, badge gaps): see [Movie Card — Spacing at 360px](/design/components/movie-card.md#spacing-at-360px). Same values reused by [OMDb Search — Search Results](/design/screens/omdb-search/search-results.md) and [Watched View](/design/screens/library-views/watched-view.md).

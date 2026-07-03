@@ -4,7 +4,7 @@ title: Tokens & Theming
 description: Colour tokens and light/dark theming approach.
 resource: https://ui.shadcn.com/
 tags: [design, foundations, tokens]
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 status: confirmed
 ---
 
@@ -25,6 +25,10 @@ Both light and dark mode are in scope for every screen — design side-by-side, 
 - All elements default to `border-border` and `outline-ring/50`.
 - `body` uses `bg-background` / `text-foreground`.
 - Enabled buttons and `[role="button"]` elements get `cursor: pointer`.
+
+## Destructive button text
+- `--destructive-foreground` was added (not present in the original stylesheet snippet) after the [Accessibility](/design/foundations/accessibility.md) colour-contrast audit found no confirmed text color for danger buttons ("Delete Movie" / "Remove from Library" in the [Movie Actions Dialog](/design/components/movie-actions-dialog.md)).
+- It **reuses `--primary-foreground`'s existing per-mode values** rather than a flat colour, because a single near-white value passes in light mode (4.60:1) but fails in dark mode (2.77:1) — dark mode's destructive red is light enough that white text sits too close to it. Reusing `primary-foreground`'s mode-flip (near-white in light, near-black in dark) clears AA in both: 4.60:1 light, 5.86:1 dark.
 
 ## Full stylesheet
 
@@ -56,6 +60,7 @@ Both light and dark mode are in scope for every screen — design side-by-side, 
     --color-input: var(--input);
     --color-border: var(--border);
     --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
     --color-accent-foreground: var(--accent-foreground);
     --color-accent: var(--accent);
     --color-muted-foreground: var(--muted-foreground);
@@ -95,6 +100,7 @@ Both light and dark mode are in scope for every screen — design side-by-side, 
     --accent: oklch(0.966 0.005 106.5);
     --accent-foreground: oklch(0.228 0.013 107.4);
     --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.988 0.003 106.5);
     --border: oklch(0.93 0.007 106.5);
     --input: oklch(0.93 0.007 106.5);
     --ring: oklch(0.737 0.021 106.9);
@@ -130,6 +136,7 @@ Both light and dark mode are in scope for every screen — design side-by-side, 
     --accent: oklch(0.286 0.016 107.4);
     --accent-foreground: oklch(0.988 0.003 106.5);
     --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.228 0.013 107.4);
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
     --ring: oklch(0.58 0.031 107.3);

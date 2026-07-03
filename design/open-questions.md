@@ -11,5 +11,4 @@ status: living document
 
 Rolling tracker of unresolved design decisions. Remove an item once it's confirmed in its relevant doc.
 
-- [ ] OMDb search screen — all states ([OMDb Search](/design/screens/omdb-search/index.md))
-- [ ] Accessibility conformance target and specific checks ([Accessibility](/design/foundations/accessibility.md))
+*(none currently open)*

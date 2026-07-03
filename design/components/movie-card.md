@@ -22,5 +22,12 @@ Used consistently across `to watch`, `watched`, and `OMDb search` views. Maps to
 ## Poster fallback
 - When OMDb returns no poster (`"N/A"`), show the [Lucide `clapperboard` icon](/design/foundations/iconography.md) centered on a muted/secondary-token background block, matching the real poster's dimensions.
 
+## Spacing at 360px
+- Poster thumbnail: fixed **56×84px** (2:3 ratio), regardless of container width.
+- Card internal padding: **12px** (`p-3`) on all sides.
+- Gap between poster and text block: **12px** (`gap-3`).
+- Gap between title and the badge row: **4px** (`gap-1`).
+- Gap between the two badges: **6px** (`gap-1.5`).
+
 ## Not shown on the card
 - Added/status-changed timestamps — deferred to [Future Considerations](/product/future-considerations.md); data is still tracked internally, just not surfaced in any UI yet.
