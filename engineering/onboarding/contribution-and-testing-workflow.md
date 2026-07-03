@@ -13,7 +13,7 @@ status: confirmed
 
 ## Branching & commits
 
-- Per-feature branching (see [Architecture & Stack](/engineering/architecture-and-stack.md)), named `<type>/<issue-number>-<kebab-description>` — the type prefix matches the Conventional Commit type used in that branch's commits. E.g. `feat/42-omdb-search`, `fix/57-library-empty-state`.
+- Per-feature branching (see [Stack & Tooling](/engineering/stack-and-tooling.md)), named `<type>/<issue-number>-<kebab-description>` — the type prefix matches the Conventional Commit type used in that branch's commits. E.g. `feat/42-omdb-search`, `fix/57-library-empty-state`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - Releases align to [Semantic Versioning (SemVer)](https://semver.org/).
 
@@ -30,7 +30,7 @@ QA's [Testing Strategy](/qa/testing-strategy.md) — Vitest, Storybook, Playwrig
 2. Manually walk through the behaviour described, confirming it matches — states, copy, and interactions as specified, not just "looks right".
 3. Check both light and dark mode (see [Tokens & Theming](/design/foundations/tokens-and-theming.md)).
 4. Check at least one mobile viewport — [MVP Requirements](/product/mvp-requirements.md) prioritises touch-first/mobile interaction.
-5. Tab through what you built. Confirm focus lands somewhere sensible after a dialog closes or a Suspense boundary resolves/errors (see [Component & State Architecture — Suspense boundaries](/engineering/onboarding/component-and-state-architecture.md#suspense-boundaries)), and that composed shadcn primitives still behave as expected on keyboard (e.g. a dialog is dismissible and trapping focus, a disabled button isn't tab-reachable). This covers engineering-side accessibility (focus/keyboard); colour contrast and labelling are Design's [Accessibility](/design/foundations/accessibility.md) doc's concern, not re-checked here.
+5. Tab through what you built. Confirm focus lands somewhere sensible after a dialog closes or a Suspense boundary resolves/errors (see [State Management — Suspense boundaries](/engineering/state-management.md#suspense-boundaries)), and that composed shadcn primitives still behave as expected on keyboard (e.g. a dialog is dismissible and trapping focus, a disabled button isn't tab-reachable). This covers engineering-side accessibility (focus/keyboard); colour contrast and labelling are Design's [Accessibility](/design/foundations/accessibility.md) doc's concern, not re-checked here.
 6. If your change resolves or touches an [Open Question](/open-questions.md), update or remove the relevant tracker item as part of the same PR.
 
 This isn't a substitute for real automated tests — it's the floor until [Testing Strategy](/qa/testing-strategy.md) is implemented, at which point this section should be replaced with concrete commands (e.g. `npm test`).

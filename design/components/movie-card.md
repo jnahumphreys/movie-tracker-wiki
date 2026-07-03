@@ -37,4 +37,4 @@ Used consistently across `to watch`, `watched`, and `OMDb search` views. Maps to
 ## Not shown on the card
 - Added/status-changed timestamps — deferred to [Future Considerations](/product/future-considerations.md); data is still tracked internally, just not surfaced in any UI yet.
 
-See also: [Component & State Architecture](/engineering/onboarding/component-and-state-architecture.md#from-design-to-code) for how this maps to actual shadcn primitives and code structure.
+See also: [Design-to-Code Mapping](/engineering/design-to-code-mapping.md) for how this maps to actual shadcn primitives and code structure.

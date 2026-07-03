@@ -25,7 +25,7 @@ status: confirmed
 
 ## OMDb API key in development
 
-There's no server-side or build-time API key baked into the app — see [Architecture & Stack](/engineering/architecture-and-stack.md). At runtime, the real flow is: a user enters their key through the app's own UI (OMDb search view), it's validated live against OMDb, then stored in local storage. See [MVP Requirements](/product/mvp-requirements.md) and [Add API Key Dialog](/design/components/add-api-key-dialog.md).
+There's no server-side or build-time API key baked into the app — see [Stack & Tooling](/engineering/stack-and-tooling.md). At runtime, the real flow is: a user enters their key through the app's own UI (OMDb search view), it's validated live against OMDb, then stored in local storage. See [MVP Requirements](/product/mvp-requirements.md) and [Add API Key Dialog](/design/components/add-api-key-dialog.md).
 
 For local dev convenience only, an optional `.env.local` shortcut pre-seeds local storage with a key on boot, so you're not re-entering it after every storage reset:
 

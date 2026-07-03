@@ -1,6 +1,6 @@
 ---
 type: Onboarding Guide
-title: Codebase Structure & Conventions
+title: Codebase Conventions
 description: Folder/file layout, naming conventions, and where new code lives.
 tags: [engineering, onboarding, conventions]
 timestamp: 2026-07-03T00:00:00Z
@@ -9,9 +9,9 @@ status: confirmed
 
 ⬅ [Onboarding](/engineering/onboarding/index.md)
 
-# Codebase Structure & Conventions
+# Codebase Conventions
 
-> The codebase hasn't been scaffolded yet — this doc sets the convention new code should follow from the first commit, per [Architecture & Stack](/engineering/architecture-and-stack.md).
+> The codebase hasn't been scaffolded yet — this doc sets the convention new code should follow from the first commit, per [Stack & Tooling](/engineering/stack-and-tooling.md).
 
 ## Top-level structure
 
@@ -53,9 +53,9 @@ src/
 
 - **New shadcn primitive** → generate via the shadcn CLI into `components/ui/` — never hand-write one.
 - **New custom component** → `components/`, flat — no per-component sub-folders at this scope.
-- **New slice** → a new `*-slice.ts` file under `stores/`, wired into `stores/index.ts`'s combined store, following the movie-cache / UI / user-library split from [Architecture & Stack](/engineering/architecture-and-stack.md). Don't add a fourth slice without cause. A slice may read another slice's state via `get()` (see [Component & State Architecture](/engineering/onboarding/component-and-state-architecture.md#store-access-pattern)) but must only ever change state — its own or another slice's — by calling that slice's own exposed action, never by reassigning state directly.
+- **New slice** → a new `*-slice.ts` file under `stores/`, wired into `stores/index.ts`'s combined store, following the movie-cache / UI / user-library split from [Stack & Tooling](/engineering/stack-and-tooling.md). Don't add a fourth slice without cause. See [State Management](/engineering/state-management.md#store-access-pattern) for the rules on how a slice may change state (its own or another's).
 - **New hook** → `hooks/`, unless it's only ever used by one slice's own internals, in which case it lives alongside that slice instead.
-- **Shared domain types** (e.g. the OMDb response shape — see [OMDb API Reference](/engineering/omdb-api-reference.md); the persisted store shapes — see [Architecture & Stack](/engineering/architecture-and-stack.md#persisted-data-shape)) → `types/`.
+- **Shared domain types** (e.g. the OMDb response shape — see [OMDb API Reference](/engineering/omdb-api-reference.md); the persisted store shapes — see [Data Caching & Persistence](/engineering/data-caching-and-persistence.md)) → `types/`.
 
 ## Import paths
 

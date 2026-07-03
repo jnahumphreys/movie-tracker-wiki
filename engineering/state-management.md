@@ -1,34 +1,30 @@
 ---
-type: Onboarding Guide
-title: Component & State Architecture
-description: How design tokens/components map to code; Zustand slice boundaries in practice.
-tags: [engineering, onboarding, architecture]
+type: Engineering Architecture
+title: State Management
+description: Zustand slices — why, store access rules, Suspense boundaries, and memoisation.
+tags: [engineering, architecture, state]
 timestamp: 2026-07-03T00:00:00Z
 status: confirmed
 ---
 
-⬅ [Onboarding](/engineering/onboarding/index.md)
+⬅ [Engineering](/engineering/index.md)
 
-# Component & State Architecture
+# State Management
 
-## From design to code
+## Why Zustand, why slices
 
-Design docs specify behaviour and shadcn component mappings; this section covers how that becomes code.
-
-- **shadcn primitives are the building blocks.** When a design doc names a shadcn component (e.g. [Movie Card](/design/components/movie-card.md) → Item + Badge), generate that primitive via the shadcn CLI into `components/ui/`, then compose it — don't hand-roll an equivalent.
-- **Styling is Tailwind utility classes only**, using the token CSS variables from [Tokens & Theming](/design/foundations/tokens-and-theming.md) (`bg-background`, `text-muted-foreground`, etc.) — never hardcoded hex/oklch values in component code.
-- **Spacing values in design docs are literal.** [Movie Card](/design/components/movie-card.md#spacing-at-360px)'s `p-3` / `gap-3` / `gap-1.5` etc. are the actual Tailwind classes to use, not just descriptive numbers.
-- **Worked example — Movie Card:** shadcn `Item` (image variant) + two `Badge` + an outlined icon-only `Button` (Lucide `ellipsis-vertical`, `aria-label="More actions"`). One `MovieCard.tsx` in `components/`, taking a movie object and its context (library view vs. search result) as props — it doesn't reach into any store directly (see below).
+- **Stack:** [Zustand](https://zustand.docs.pmnd.rs/) (slices pattern) with Suspense, confirmed 2026-07-03 — replacing an earlier plain Context+Reducer plan. Slices are what make the cache-eviction-needs-library-visibility case (see [Data Caching & Persistence](/engineering/data-caching-and-persistence.md)) workable without either scattering cross-store logic across components or reaching for a heavier library: slices share one store, and a slice's own action can read another slice's state via `get()`. Still small (~1KB) and dependency-light.
+- Maintain a clear separation between the movie cache slice, UI slice, and user library slice — each exposes its own actions; other slices call those actions (or read state via `get()`), never reassign another slice's state directly.
 
 ## Store access pattern
 
-State is a **single Zustand store composed of three slices** ([Architecture & Stack](/engineering/architecture-and-stack.md): movie cache, UI, user library) — one store, not three separate Providers:
+State is a **single Zustand store composed of three slices** (movie cache, UI, user library) — one store, not three separate Providers.
 
 - **One slice file per concern**, each exposing its own typed state and actions (e.g. the movie-cache slice exposes `cacheMovie()`, the user-library slice exposes `addToLibrary()`, `reassignStatus()`, `removeFromLibrary()`). Components read via a selector — `useStore(state => state.movieCache.entries)` — and only re-render when the selected slice of state actually changes; no Provider, no Context, no manual memoised-selector plumbing to write yourself.
 - **A slice's actions are the only sanctioned way to change its own state.** Never mutate slice state directly from a component or from another slice — always go through the owning slice's exposed action, even when that call happens from inside another slice (see cross-slice case below).
-- **Cross-slice reads are allowed via `get()`, cross-slice mutation is not.** A slice's own action may call `get()` to read another slice's state (e.g. the movie-cache slice's eviction check reads library state to know what's exempt, see [persisted data shape](/engineering/architecture-and-stack.md#persisted-data-shape)) — but it still only changes state by calling that other slice's own exposed action, never by reassigning its state directly. This is what makes the eviction logic possible without scattering it across UI components, while keeping each slice's own state changes centralised in one place.
+- **Cross-slice reads are allowed via `get()`, cross-slice mutation is not.** A slice's own action may call `get()` to read another slice's state (e.g. the movie-cache slice's eviction check reads library state to know what's exempt — see [Data Caching & Persistence](/engineering/data-caching-and-persistence.md)) — but it still only changes state by calling that other slice's own exposed action, never by reassigning its state directly. This is what makes the eviction logic possible without scattering it across UI components, while keeping each slice's own state changes centralised in one place.
 - These store-access rules aren't enforced by tooling yet — relying on manual discipline for now (solo project); a lint rule to catch violations automatically is deferred post-MVP, see [Engineering — Future Considerations](/engineering/future-considerations.md).
-- **Adding a search result to the library only touches the user-library slice's state.** The movie cache slice ([persisted data shape](/engineering/architecture-and-stack.md#persisted-data-shape)) is the single source of movie data and is already populated by the time a result is on screen — the library slice just saves a status/dates reference by OMDb ID, it doesn't duplicate the movie data. There's no second slice to keep in sync for this action, and no rollback logic needed: the cache's own lookup-with-fallback behaviour makes any cache miss self-healing on the next read.
+- **Adding a search result to the library only touches the user-library slice's state.** The movie cache slice ([Data Caching & Persistence](/engineering/data-caching-and-persistence.md)) is the single source of movie data and is already populated by the time a result is on screen — the library slice just saves a status/dates reference by OMDb ID, it doesn't duplicate the movie data. There's no second slice to keep in sync for this action, and no rollback logic needed: the cache's own lookup-with-fallback behaviour makes any cache miss self-healing on the next read.
 
 ## Suspense boundaries
 
@@ -49,3 +45,5 @@ Each boundary is scoped to its own section, not one app-wide catch-all — a fai
 - Wrap components rendered in lists (`MovieCard` inside library/search-results lists) in `React.memo` — props are stable per item.
 - Derive expensive computed values (filtered/sorted lists) with `useMemo`, keyed on the actual store state slice that changed.
 - **Selectors do the heavy lifting Zustand already gives you.** Always subscribe with a selector (`useStore(state => state.userLibrary.entries)`), never the whole store (`useStore()` with no selector) — the former only re-renders on a change to that specific piece of state, the latter re-renders on every store update regardless of what the component actually reads. A component that only calls actions (never reads state) doesn't need to subscribe to anything at all.
+
+See also: [Codebase Conventions](/engineering/onboarding/codebase-conventions.md) for how slices map to actual files, [Data Caching & Persistence](/engineering/data-caching-and-persistence.md) for the movie-cache and user-library slice shapes specifically, and [Design-to-Code Mapping](/engineering/design-to-code-mapping.md) for how design docs become components that read from this store.

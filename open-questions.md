@@ -41,6 +41,7 @@ Mechanical link-check found these targets don't exist, and exactly one same-name
 - 9× `/design/open-questions.md` (2026-07-02 and 2026-07-03 entries) — consolidated into `/open-questions.md` per the "Consolidated `product/open-questions.md` and `design/open-questions.md`..." entry.
 - `/product/agent-skills.md` (2026-07-02 entry) — relocated to `/ai/agent-skills.md` per the "Established a new AI area..." entry.
 - `/engineering/ai-and-mcp-tooling.md` (2026-07-02 entry) — consolidated into `/ai/mcp-tooling.md`, same entry.
+- 15× `/engineering/architecture-and-stack.md`, 6× `/engineering/onboarding/component-and-state-architecture.md`, 4× `/engineering/onboarding/codebase-structure-and-conventions.md` (various 2026-07-03 entries) — per the "Split /engineering into concept docs" entry, these three files were retired and their content redistributed across `/engineering/stack-and-tooling.md`, `/engineering/state-management.md`, `/engineering/data-caching-and-persistence.md`, `/engineering/design-to-code-mapping.md`, and `/engineering/onboarding/codebase-conventions.md` — no single new file is a 1:1 replacement, so even a "rewrite to current path" resolution would need per-link judgment on which new doc a given historical mention now maps to.
 
 Decision needed: leave `log.md`'s historical links as-written (accurate to their moment, but dead today), or rewrite them to current paths for reader convenience. Not treating this as a plain dead-link fix without a call on which `log.md`'s links are "for."
 
