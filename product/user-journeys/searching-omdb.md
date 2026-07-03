@@ -47,8 +47,9 @@ status: confirmed
 
 ## Error
 
-1. If an error occurs, indicate this via the message UI. This could be a network error, an API error, or an authentication/API key error.
+1. If an error occurs, indicate this via the message UI. This could be a network error, an API error, an authentication/API key error, or the key's daily request limit being reached.
 2. For an authentication/API key error specifically, the message UI offers a way to fix the key directly (opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md)) — see [App First Launch](/product/user-journeys/app-first-launch.md) for why this is discovered here rather than checked proactively.
 3. **After a successful key fix at MVP:** the user returns to the search view with their original query still retained in the input, and re-runs the search manually — it does not re-run automatically. Auto-retrying the retained query on a successful key fix is a post-MVP enhancement — see [Future Considerations](/product/future-considerations.md).
+4. **Daily request limit reached** is its own case, distinct from an invalid key — the key is still valid, it's just exhausted OMDb's free-tier daily cap. The message UI tells the two apart (a limit isn't something retrying or waiting a moment fixes) and offers the same "fix the key" action as the invalid-key case, since switching to a different key is the only same-session workaround; the alternative is waiting for OMDb's daily reset.
 
 Design reference: [OMDb Search](/design/screens/omdb-search/index.md)

@@ -3,7 +3,7 @@ type: Reference
 title: References
 description: Every external link used across the wiki, collated for quick lookup.
 tags: [reference]
-timestamp: 2026-07-02T00:00:00Z
+timestamp: 2026-07-03T00:00:00Z
 status: living document
 ---
 
@@ -51,3 +51,6 @@ Every external link used across the wiki, collated for quick lookup.
 38. [Anthropic Product Management plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management)
 39. [agile-product-owner skill](https://github.com/alirezarezvani/claude-skills/blob/main/product-team/agile-product-owner/SKILL.md)
 40. [pm-skills marketplace](https://github.com/phuryn/pm-skills)
+41. [OMDb API](https://www.omdbapi.com/)
+42. [The Movie Database (TMDB)](https://www.themoviedb.org/?language=en-GB)
+43. [nvm](https://github.com/nvm-sh/nvm)

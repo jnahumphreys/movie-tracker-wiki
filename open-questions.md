@@ -43,3 +43,13 @@ Mechanical link-check found these targets don't exist, and exactly one same-name
 - `/engineering/ai-and-mcp-tooling.md` (2026-07-02 entry) — consolidated into `/ai/mcp-tooling.md`, same entry.
 
 Decision needed: leave `log.md`'s historical links as-written (accurate to their moment, but dead today), or rewrite them to current paths for reader convenience. Not treating this as a plain dead-link fix without a call on which `log.md`'s links are "for."
+
+## 6. Nine `/references.md` entries have no hyperlink citation elsewhere in the wiki
+
+New [ledger-sync check](/ai/audit-process.md#audit-mode-mechanical-cron-safe) added 2026-07-03: it added 3 missing entries automatically (safe — nothing lost), but flags removals for human review rather than auto-deleting, since this wiki often names a tool/library in prose without hyperlinking it every time. Checked each of the 9 against prose (not just links):
+
+- **Genuinely no trace anywhere** — safe-looking candidate for removal: [shadcn preset](https://ui.shadcn.com/create?preset=b6sByO7BQ&pointer=true).
+- **Named in prose, just not hyperlinked** — likely still relevant, missing an inline link rather than stale: [Button Group Input](https://ui.shadcn.com/docs/components/radix/button-group#input) (named in [Search Input](/design/screens/omdb-search/search-input.md)), [Input](https://ui.shadcn.com/docs/components/radix/input) (named in [Watched View](/design/screens/library-views/watched-view.md), [To Watch View](/design/screens/library-views/to-watch-view.md)), [Empty](https://ui.shadcn.com/docs/components/radix/empty) (named throughout `/design/screens`), [Fontsource — Noto Serif Variable](https://fontsource.org/fonts/noto-serif) (typeface named in [Tokens & Theming](/design/foundations/tokens-and-theming.md)), [Anthropic Product Management plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/product-management), [agile-product-owner skill](https://github.com/alirezarezvani/claude-skills/blob/main/product-team/agile-product-owner/SKILL.md), and [pm-skills marketplace](https://github.com/phuryn/pm-skills) (all three named by repo path in [AI Agent Skills — Product Owner](/ai/agent-skills.md)'s Candidates section).
+- **Weak/generic match only** — mentions "Button" but generically, not clearly citing this specific component page: [Button](https://ui.shadcn.com/docs/components/radix/button).
+
+Decision needed: for the "named but not hyperlinked" group, add the inline link where each is named (turning the citation real) or confirm it's fine for `/references.md` to hold links for prose-only mentions; for the preset and the generic-Button case, confirm they're actually stale before removing.

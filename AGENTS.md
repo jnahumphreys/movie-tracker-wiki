@@ -25,7 +25,7 @@ status: not started | in progress | confirmed
 ```
 
 **Existing type taxonomy — reuse these, don't fragment it:**
-`Product Requirement` · `Future Consideration` · `User Journey` · `Design Foundation` · `Design Component` · `Design Screen` · `Tracking` · `Engineering Architecture` · `API Reference` · `AI Tooling` · `Testing Strategy` · `Deployment` · `Reference`
+`Product Requirement` · `Future Consideration` · `User Journey` · `Design Foundation` · `Design Component` · `Design Screen` · `Tracking` · `Engineering Architecture` · `API Reference` · `AI Tooling` · `Testing Strategy` · `Deployment` · `Reference` · `Onboarding Guide`
 
 ## 3. Where new content goes
 

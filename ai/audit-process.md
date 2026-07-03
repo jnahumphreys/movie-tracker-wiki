@@ -26,6 +26,7 @@ Fully deterministic checks only. No judgment calls. Safe to run unattended (manu
 On top of enforcing `AGENTS.md` §1, §2, and the status-emoji parity rule in §5, audit mode also checks **link integrity**, which isn't defined anywhere else:
 - Every bundle-absolute internal link resolves to a file that actually exists at that path.
 - Every external link (in `/references.md` or inline) is reachable — best-effort; skip silently if the environment running the audit has no network access, don't escalate a network failure as a dead link.
+- **`/references.md` ledger sync**: every outbound (`http(s)://`) link cited anywhere in the wiki — inline markdown links or a concept's `resource:` frontmatter field — has a matching entry in `/references.md`. This direction (missing entry) is mechanical. The reverse — a `/references.md` entry with no hyperlink citation elsewhere — is *not* automatically "stale": this wiki's convention is to often name a tool/component/library in prose (e.g. "shadcn Empty component", "Noto Serif Variable") without inlining its URL at every mention, relying on `/references.md` as the one place the link lives. Confirming a link is genuinely orphaned (vs. just prose-cited without a hyperlink) requires reading the surrounding text, which is a judgment call, not a mechanical match — see auto-fix/escalation split below.
 
 ### Auto-fix rules
 
@@ -35,6 +36,7 @@ Only fix when the fix is unambiguous. Specifically:
 - **`type` value is a near-miss typo** of a taxonomy entry (checked against `AGENTS.md` §2 directly, e.g. `Api Reference` vs `API Reference`) — correct to the canonical value.
 - **Status-emoji mismatch** (the parity rule `AGENTS.md` §5 already defines) — update the parent `index.md`'s emoji to match the doc's real `status`, never the reverse; the doc's frontmatter is the source of truth.
 - **Missing `timestamp`** where it can be derived from the file's last commit date — fill it in.
+- **`/references.md` missing entry**: a cited outbound link (inline or `resource:`) not yet in `/references.md` — append it as a new numbered entry, using the link text from where it's cited (first occurrence in file-path alphabetical order, if cited with different text in more than one place) as the reference title. Renumber the list after any addition so numbering stays sequential. Adding is low-risk (nothing is lost), so this direction is a straight auto-fix.
 
 Every auto-fix gets logged to `/log.md` (dated entry, `**Fix**` verb) so it's visible, even though no one approved it in the moment.
 
@@ -46,6 +48,7 @@ Anything not covered by an auto-fix rule above gets appended to `/open-questions
 - A `type` value that isn't a near-miss of the `AGENTS.md` §2 taxonomy — looks like a genuinely new type, which needs a human decision on whether to add it or reuse an existing one.
 - A structural violation that implies a rename or restructure (e.g. a `README.md` that should become `index.md`, or a doc that's grown too broad and should become its own sub-folder per `AGENTS.md` §4) — these can break other files' links if acted on automatically, so they're always escalated.
 - Anything that looks like a cross-document contradiction or duplication noticed in passing. Audit mode does **not** go looking for these on its own — see Semantic mode below — but if one is obvious while doing the mechanical sweep, note it rather than discard it.
+- A `/references.md` entry with no matching hyperlink citation elsewhere in the wiki. Check first whether its subject is still named in prose without a link (common in this wiki — see the ledger-sync check above); if so, escalate as "possibly still relevant, just not hyperlinked" rather than removing it. Never delete a `/references.md` entry as an auto-fix — the risk of dropping a genuinely-still-used resource is higher than the cost of one extra open question.
 
 Each escalation entry in `/open-questions.md` should include: which doc(s) are involved, what was found, and why it couldn't be auto-resolved.
 

@@ -24,6 +24,7 @@ OMDb-search-specific — covers network, API, and auth/key errors per the behavi
 | Cause | Title | Subtitle |
 | --- | --- | --- |
 | Invalid API key | "Cut! That's a blooper." | "That key doesn't look right — update it to keep the cameras rolling." |
+| Daily request limit reached | "That's a wrap for today!" | "You've hit today's search limit for this key. Try a different key, or wait for tomorrow's reset." |
 | No connection | "Who turned out the lights?" | "Looks like you're offline. Check your connection and try again." |
 | Other API error | "Cut! That's a blooper." | "Something went wrong on our end. Give it another take." |
 
@@ -39,15 +40,16 @@ Icon sits on the same muted/secondary-token background block used for the [Movie
 | --- | --- |
 | No results found | `search-x` |
 | Invalid API key | `key-round` |
+| Daily request limit reached | `hourglass` |
 | No connection | `wifi-off` |
 | Other API error | `circle-alert` |
 
 ### Action button
-Only the invalid API key state gets an action: an **"Add API key"** button in the Empty component's action slot, opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md) directly from the error. See the dialog's own doc for its live-validation behaviour and what happens to this search on a successful fix. The other three states are message-only (no button).
+The invalid API key and daily-limit states each get an action: an **"Add API key"** button in the Empty component's action slot, opening the [Add API Key Dialog](/design/components/add-api-key-dialog.md) directly from the error — for the limit case, this is the same-session workaround (switch keys) rather than a fix to the existing key. See the dialog's own doc for its live-validation behaviour and what happens to this search on a successful fix. The other three states are message-only (no button).
 
 ### Spacing at 360px
 - Icon badge: 48×48px, centered.
 - Icon-to-title gap: 16px.
 - Title-to-subtitle gap: 8px.
-- Subtitle-to-action-button gap (invalid-key state only): 16px.
+- Subtitle-to-action-button gap (invalid-key and daily-limit states only): 16px.
 - Page horizontal margin: 16px each side (content width 328px), matching [Search Results](/design/screens/omdb-search/search-results.md#spacing-at-360px).

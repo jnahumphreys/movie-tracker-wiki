@@ -19,3 +19,4 @@ status: reference only
 - Maintain a [changelog](https://keepachangelog.com/en/1.1.0/).
 - Pre-commit hooks to verify formatting, linting, and conventional commit messages.
 - GitHub Actions to automate PR QA checks.
+- A `CODEOWNERS` file requiring peer review before merge, once more than one contributor is active — see [Contribution & Testing Workflow](/engineering/onboarding/contribution-and-testing-workflow.md#pr-review).

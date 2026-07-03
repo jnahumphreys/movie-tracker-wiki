@@ -19,4 +19,4 @@ status: reference only
 - End-to-end testing of core user flows.
 - [Playwright MCP](https://playwright.dev/mcp) (official, Microsoft) — supports the planned end-to-end testing of core user flows.
 
-See also: [Engineering — Future Considerations](/engineering/future-considerations.md) for the Component-Driven Development / Storybook adoption this depends on.
+See also: [Engineering — Future Considerations](/engineering/future-considerations.md) for the Component-Driven Development / Storybook adoption this depends on, and [Contribution & Testing Workflow](/engineering/onboarding/contribution-and-testing-workflow.md#verifying-your-work-before-opening-a-pr) for the interim manual verification checklist used until this strategy is implemented.
