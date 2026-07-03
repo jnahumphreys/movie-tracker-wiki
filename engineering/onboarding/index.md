@@ -2,7 +2,7 @@
 
 # Onboarding
 
-Everything a frontend engineer needs to go from zero to shipping a PR on Movie Tracker — dev environment, codebase conventions, how design maps to code, and the contribution/testing workflow. Broken into its own sub-folder because it's too broad for one doc (per `AGENTS.md` §4).
+Everything a frontend engineer needs to go from zero to shipping a PR on Movie Tracker — dev environment, codebase conventions, how design maps to code, and the contribution/testing workflow. Broken into its own sub-folder because it's too broad for one doc.
 
 # Documents
 

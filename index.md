@@ -28,3 +28,8 @@ Status per doc: ✅ Confirmed · 🚧 In progress · ⬜ Not started · This mea
 # Reference
 
 * [References](/references.md) - Every external link used across the wiki, collated for quick lookup.
+
+# Governance
+
+* [AGENTS.md](/AGENTS.md) - Policy for any agent working in this bundle: structure, frontmatter, and working process.
+* [OKF-SKILL.md](/OKF-SKILL.md) - Source of truth for OKF mechanics: bundle structure, validation, and authoring.

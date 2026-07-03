@@ -21,7 +21,7 @@ Fully deterministic checks only. No judgment calls. Safe to run unattended (manu
 
 ### Checks
 
-`AGENTS.md` is the single source of truth for what "conformant" means — its §1 (structure rules) and §2 (frontmatter template, including the type taxonomy and status enum) define every rule being checked here. This doc doesn't restate those rules; it only says how they get checked, fixed, or escalated. Re-read `AGENTS.md` §1–§2 directly for the actual rule text before auditing — don't rely on a paraphrase of it living in two places.
+`AGENTS.md` is the single source of truth for what "conformant" means — its §1 (structure rules) and §2 (frontmatter template, including the type taxonomy and the status field's current values) define every rule being checked here. This doc doesn't restate those rules; it only says how they get checked, fixed, or escalated. Re-read `AGENTS.md` §1–§2 directly for the actual rule text before auditing — don't rely on a paraphrase of it living in two places.
 
 On top of enforcing `AGENTS.md` §1, §2, and the status-emoji parity rule in §5, audit mode also checks **link integrity**, which isn't defined anywhere else:
 - Every bundle-absolute internal link resolves to a file that actually exists at that path.
@@ -35,7 +35,7 @@ Only fix when the fix is unambiguous. Specifically:
 
 - **Broken internal link, target found elsewhere**: if exactly one file in the wiki matches the broken link's filename or old path, rewrite the link to the correct bundle-absolute path. If more than one file could plausibly match, or none do, don't guess — escalate instead.
 - **`type` value is a near-miss typo** of a taxonomy entry (checked against `AGENTS.md` §2 directly, e.g. `Api Reference` vs `API Reference`) — correct to the canonical value.
-- **Status-emoji mismatch** (the parity rule `AGENTS.md` §5 already defines) — update the parent `index.md`'s emoji to match the doc's real `status`, never the reverse; the doc's frontmatter is the source of truth.
+- **Status-emoji mismatch** — fix per the parity rule in `AGENTS.md` §5.
 - **Missing `timestamp`** where it can be derived from the file's last commit date — fill it in.
 - **`/references.md` missing entry**: a cited outbound link (inline or `resource:`) not yet in `/references.md` — append it as a new numbered entry, using the link text from where it's cited (first occurrence in file-path alphabetical order, if cited with different text in more than one place) as the reference title. Renumber the list after any addition so numbering stays sequential. Adding is low-risk (nothing is lost), so this direction is a straight auto-fix.
 - **Bare code fence, language unambiguous from content**: a ` ``` ` with no language tag wrapping content whose language is obvious (shell/env output, JSON, YAML, CSS, a directory tree, etc.) — add the tag (`bash`, `json`, `yaml`, `css`, `text` for trees/plain output, etc.). If the content's language genuinely isn't clear, don't guess — escalate instead.
@@ -48,7 +48,7 @@ Anything not covered by an auto-fix rule above gets appended to `/open-questions
 
 - A broken link with zero or multiple plausible targets (genuinely dead, or ambiguous).
 - A `type` value that isn't a near-miss of the `AGENTS.md` §2 taxonomy — looks like a genuinely new type, which needs a human decision on whether to add it or reuse an existing one.
-- A structural violation that implies a rename or restructure (e.g. a `README.md` that should become `index.md`, or a doc that's grown too broad and should become its own sub-folder per `AGENTS.md` §4) — these can break other files' links if acted on automatically, so they're always escalated.
+- A structural violation that implies a rename or restructure (e.g. a `README.md` that should become `index.md`, or a doc that's grown too broad and should become its own sub-folder) — these can break other files' links if acted on automatically, so they're always escalated.
 - Anything that looks like a cross-document contradiction or duplication noticed in passing. Audit mode does **not** go looking for these on its own — see Semantic mode below — but if one is obvious while doing the mechanical sweep, note it rather than discard it.
 - A `/references.md` entry with no matching hyperlink citation elsewhere in the wiki. Check first whether its subject is still named in prose without a link (common in this wiki — see the ledger-sync check above); if so, escalate as "possibly still relevant, just not hyperlinked" rather than removing it. Never delete a `/references.md` entry as an auto-fix — the risk of dropping a genuinely-still-used resource is higher than the cost of one extra open question.
 - A bare code fence whose language can't be confidently inferred from its content (e.g. ambiguous pseudo-code, or content that's a mix of more than one language/format).
@@ -72,14 +72,7 @@ This mode has no fixed checklist — it requires actually reading and comparing 
 
 Never runs on a schedule — it requires a human present to make judgment calls. Triggered explicitly (e.g. "resolve open questions," "let's go through the audit tracker").
 
-Follows `AGENTS.md` §5's existing working process: one question at a time, narrowing to a recommendation. Walk `/open-questions.md` top to bottom:
-
-1. Present one item with enough context to decide.
-2. Once resolved, update the relevant doc(s) — including frontmatter `status` and the parent `index.md`'s status emoji.
-3. Remove the resolved item from `/open-questions.md`.
-4. Log the change in `/log.md`.
-
-Don't batch multiple items into one question, and don't move to the next item until the current one is actually resolved in its doc — matching how every other wiki decision gets made here.
+Applies `AGENTS.md` §5's working process to the tracker specifically: walk `/open-questions.md` top to bottom, one item at a time, following §5's ask → resolve → close-out loop for each. See `AGENTS.md` §5 for the actual steps — nothing here overrides or adds to them; the only thing specific to this mode is the top-to-bottom walk order.
 
 ## Triggering
 
