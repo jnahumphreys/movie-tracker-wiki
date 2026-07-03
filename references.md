@@ -54,3 +54,5 @@ Every external link used across the wiki, collated for quick lookup.
 41. [OMDb API](https://www.omdbapi.com/)
 42. [The Movie Database (TMDB)](https://www.themoviedb.org/?language=en-GB)
 43. [nvm](https://github.com/nvm-sh/nvm)
+44. [OKF — The Markdown Spec for Humans and AI Agents](https://okf.md/)
+45. [Google Cloud Platform — knowledge-catalog OKF spec](https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf)
